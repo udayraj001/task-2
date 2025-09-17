@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import * as THREE from 'three';
+import React, { useEffect, useRef } from "react";
+import * as THREE from "three";
 
 const ParticleAnimation = () => {
   const containerRef = useRef(null);
@@ -20,7 +20,7 @@ const ParticleAnimation = () => {
       0.1,
       1000
     );
-    camera.position.set(0, 40, 100);
+    camera.position.set(0, 40, 120);
     camera.lookAt(0, 0, 0);
 
     // Renderer setup
@@ -36,24 +36,16 @@ const ParticleAnimation = () => {
     const particleGroup = new THREE.Group();
     scene.add(particleGroup);
 
-    // Create dense particle grid
-    const gridSizeX = 120;
+    // Grid setup
+    const gridSizeX = 100;
     const gridSizeZ = 60;
-    const spacingX = 4;
-    const spacingZ = 6;
+    const spacingX = 3.5;
+    const spacingZ = 5;
     const particles = [];
 
     for (let x = 0; x < gridSizeX; x++) {
       for (let z = 0; z < gridSizeZ; z++) {
-        const isCircle = Math.random() > 0.5;
-
-        let geometry;
-        if (isCircle) {
-          geometry = new THREE.CircleGeometry(0.6, 8);
-        } else {
-          geometry = new THREE.PlaneGeometry(1.0, 0.6);
-        }
-
+        const geometry = new THREE.CircleGeometry(0.6, 8);
         const material = new THREE.MeshBasicMaterial({
           color: 0x22c55e,
           transparent: true,
@@ -78,7 +70,7 @@ const ParticleAnimation = () => {
       }
     }
 
-    // Animation loop
+    // Animation loop (smooth wave)
     let time = 0;
     const animate = () => {
       time += 0.03;
@@ -86,27 +78,28 @@ const ParticleAnimation = () => {
       particles.forEach((particle) => {
         const { originalX, originalZ, gridX, gridZ } = particle.userData;
 
-        const waveFreq1 = 0.08;
-        const waveFreq2 = 0.12;
-        const waveFreq3 = 0.05;
+        // Continuous wave formula (like ocean ripples)
+        const waveSpeed = 0.2;
+        const waveLength = 0.3;
+        const amplitude = 12;
 
-        const wave1 = Math.sin(time * 2 + gridX * waveFreq1) * 10;
-        const wave2 = Math.sin(time * 1.5 + gridZ * waveFreq2) * 6;
-        const wave3 = Math.sin(time * 0.8 + (gridX + gridZ) * waveFreq3) * 4;
+        particle.position.y =
+          Math.sin(gridX * waveLength + time * 2) * amplitude +
+          Math.cos(gridZ * waveLength + time * 1.5) * amplitude * 0.5;
 
-        const waveHeight = wave1 + wave2 + wave3;
+        // Keep X & Z fixed (remove chaotic motion)
+        particle.position.x = originalX;
+        particle.position.z = originalZ;
 
-        particle.position.y = waveHeight;
-        particle.position.x = originalX + Math.sin(time * 0.5 + gridX * 0.1) * 1;
-        particle.position.z = originalZ + Math.cos(time * 0.3 + gridZ * 0.1) * 0.5;
-
+        // Subtle opacity based on height
         const material = particle.material;
-        const heightFactor = (waveHeight + 18) / 36;
+        const heightFactor = (particle.position.y + amplitude) / (2 * amplitude);
         material.opacity = 0.4 + heightFactor * 0.5;
       });
 
-      camera.position.x = Math.sin(time * 0.1) * 8;
-      camera.position.y = 40 + Math.sin(time * 0.08) * 3;
+      // Gentle camera float
+      camera.position.x = Math.sin(time * 0.1) * 10;
+      camera.position.y = 40 + Math.sin(time * 0.05) * 5;
       camera.lookAt(0, 0, 0);
 
       renderer.render(scene, camera);
@@ -124,11 +117,11 @@ const ParticleAnimation = () => {
       renderer.setSize(clientWidth, clientHeight);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Cleanup
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
       if (containerRef.current && renderer.domElement) {
         containerRef.current.removeChild(renderer.domElement);
@@ -145,7 +138,7 @@ const ParticleAnimation = () => {
     <div
       ref={containerRef}
       className="w-full pointer-events-none"
-      style={{ height: '350px' }}
+      style={{ height: "350px" }}
     />
   );
 };
