@@ -40,7 +40,7 @@ const Header = () => {
           </div>
 
           {/* Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8 text-[18px] font-medium">
+          <nav className="hidden lg:flex items-center space-x-11 text-[17px] font-medium">
             {navItems.map((item) => (
               <div
                 key={item.name}

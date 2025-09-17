@@ -8,9 +8,9 @@ const HeroSection = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 pt-14">
         {/* News Banner */}
         <div className="flex justify-center mb-5">
-          <div className="bg-[#FFFFFF] rounded-full px-5 py-2 shadow-sm border flex items-center space-x-1">
+          <div className="bg-[#FFFFFF] rounded-full px-5 py-2 shadow-sm  flex items-center space-x-1">
             <div className="w-3 h-3 bg-[#B0FF44] rounded-full"></div>
-            <span className="text-[7px] text-gray-700 md:text-[12px] md:font-semibold">
+            <span className="text-[7px] text-gray-700 md:text-[12px] md:font-semibold tracking-tight">
               JSW Motors & KPIT Technologies forge strategic collaboration
             </span>
           </div>
@@ -18,10 +18,10 @@ const HeroSection = () => {
 
         {/* Main Heading */}
         <div className="text-center">
-          <h1 className="font-inter text-3xl md:text-[76px] font-bold text-gray-900 leading-tight mb-2">
+          <h1 className="font-inter text-3xl md:text-[76px] font-bold text-gray-900 leading-tight  tracking-tight">
             Shaping The Future
             <br />
-            <span className="font-inter text-gray-800">Of Mobility</span>
+            <span className="font-inter text-gray-800 tracking-tight">Of Mobility</span>
           </h1>
 
           <p className="text-sm md:text-[18px] text-[#464646] max-w-4xl mx-auto leading-relaxed">
