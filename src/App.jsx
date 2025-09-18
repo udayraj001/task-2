@@ -7,6 +7,7 @@ import GalaxyParticles from "./components/cars/GalaxyParticles";
 import SmokeTransition from "./components/cars/SmokeTransition ";
 import { AnimatePresence, motion } from "framer-motion";
 import Footer from "./components/Footer";
+import Subscribe from "./components/subscribe/Subscribe";
 
 const App = () => {
   const [stage, setStage] = useState("clients");
@@ -126,6 +127,7 @@ const App = () => {
         </AnimatePresence>
       </div>
     </div>
+    <Subscribe/>
 <Footer/>
     </>
   );
