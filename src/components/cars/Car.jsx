@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import car from '../../assets/3d/car.png'
+import car from "../../assets/3d/car.png";
 
 const Car = () => {
   const [rotation, setRotation] = useState(0);
@@ -15,60 +15,29 @@ const Car = () => {
   };
 
   return (
-    <div className="w-full bg-black text-white px-12 py-16 flex flex-col md:flex-row items-center justify-between gap-12 border border-gray-600 rounded full p-5">
+  <>
+  <div className="text-3xl ml-3.5 justify-center items-center font-bold md:text-4xl md:ml-64 md:">Innovative, Tailored <span>Solutions</span> <span>for Mobility Ecosystem</span>
+</div>
+    <div className="m-3 md:ml-56 md:w-2/3 mt-16 md:py-36 md:px-48 bg-black text-white md:mt-36 flex flex-col md:flex-row items-center justify-between  border border-gray-600 rounded-3xl p-4">
       {/* Left Text Content */}
       <div className="flex-1">
-        <h1 className="text-4xl md:text-5xl font-bold leading-snug">
-          Bringing Unparalleled Expertise To Solve <br />
-          The Industry&apos;s Most Pressing Challenges.
+        <h1 className="text-2xl md:text-5xl font-bold leading-snug">
+          Passenger Car
         </h1>
 
-        <ul className="mt-6 space-y-4 text-gray-300">
-          <li className="flex items-center gap-3">
-            <span className="text-green-400 text-xl">✔</span>
-            Deep understanding of your success factors.
-          </li>
-          <li className="flex items-center gap-3">
-            <span className="text-green-400 text-xl">✔</span>
-            Familiarity with the global landscape.
-          </li>
-          <li className="flex items-center gap-3">
-            <span className="text-green-400 text-xl">✔</span>
-            Aligned to your technology roadmap.
+        <ul className="mt-2 space-y-4 text-gray-300">
+          <li className="flex items-center gap-3 tracking-tight text-sm">
+            Driving innovation in software and systems for next generation
+            passenger cars.{" "}
           </li>
         </ul>
 
-        <button className="mt-6 px-6 py-3 bg-purple-600 text-white font-semibold rounded-full shadow-lg hover:bg-purple-700 transition">
-          Explore Our Expertise
+        <button className="text-sm mt-6 ml-16 py-2 px-4 justify-center items-center bg-[#6a4be7] text-white font-semibold rounded-full shadow-lg hover:bg-purple-700 transition">
+          Know More {">"}
         </button>
 
-        {/* Stats */}
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
-          <div>
-            <h2 className="text-green-400 text-2xl font-bold">20Mn+</h2>
-            <p className="text-gray-400 text-sm mt-1">
-              Vehicles on road with KPIT SW
-            </p>
-          </div>
-          <div>
-            <h2 className="text-green-400 text-2xl font-bold">700+</h2>
-            <p className="text-gray-400 text-sm mt-1">
-              Production Programs Experience
-            </p>
-          </div>
-          <div>
-            <h2 className="text-green-400 text-2xl font-bold">10+</h2>
-            <p className="text-gray-400 text-sm mt-1">
-              Ecosystem partnerships from chip to cloud domain
-            </p>
-          </div>
-          <div>
-            <h2 className="text-green-400 text-2xl font-bold">80+</h2>
-            <p className="text-gray-400 text-sm mt-1">
-              Ready Platforms, Tools & Accelerators
-            </p>
-          </div>
-        </div>
+      
+     
       </div>
 
       {/* Right Car Image */}
@@ -87,6 +56,7 @@ const Car = () => {
         />
       </motion.div>
     </div>
+    </>
   );
 };
 

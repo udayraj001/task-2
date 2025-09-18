@@ -50,12 +50,12 @@ const Clients = () => {
   return (
     <div className="w-full bg-gray-50 py-12 overflow-x-hidden">
       {/* Cards Section */}
-      <div className="max-w-7xl mx-auto px-[5px] sm:px-4 md:px-6 lg:px-8 mb-12">
+      <div className="max-w-7xl mx-auto px-1 md:px-6 mb-12">
         <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
           {cards.map((card) => (
             <div
               key={card.id}
-              className="min-w-[85%] sm:min-w-[60%] md:min-w-0 snap-start rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-white text-gray-800"
+              className="min-w-[75%] sm:min-w-[60%] md:min-w-0  rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-white text-gray-800"
             >
               <div className="flex flex-col md:flex-row items-start">
                 {/* Image */}

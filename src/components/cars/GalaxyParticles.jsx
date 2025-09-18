@@ -123,7 +123,7 @@ const GalaxyParticles = () => {
   return (
     <div
       ref={containerRef}
-      className="w-full h-[100dvh] bg-black"
+      className="w-full h-[150dvh] bg-black "
       style={{ overflow: "hidden" }}
     />
   );
