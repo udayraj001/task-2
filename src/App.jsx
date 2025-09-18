@@ -1,16 +1,18 @@
-import React from 'react'
-import Header from './components/Header'
-import HeroSection from './components/HeroSection'
-
+import React from "react";
+import Header from "./components/Header";
+import HeroSection from "./components/HeroSection";
+import Clients from "./components/Clients/Clients";
 
 const App = () => {
   return (
     <div>
-     <Header/>
-     <HeroSection/>
-   
-    </div>
-  )
-}
+      <Header />
+      <HeroSection />
 
-export default App
+      {/* Clients */}
+      <Clients />
+    </div>
+  );
+};
+
+export default App;

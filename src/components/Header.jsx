@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <header className="bg-white shadow-sm relative z-50">
       {/* Top bar */}
-      <div className="bg-black text-[#DEDEDE] md:text-xs py-3">
+      <div className="bg-black text-[#DEDEDE] text-[9px] md:text-xs py-3">
         <div className="max-w-7xl mx-auto px-4 flex justify-end items-center space-x-6">
           <span>KPIT Worldwide</span>
           <div className="flex items-center space-x-1">
