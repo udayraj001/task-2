@@ -6,6 +6,7 @@ import Car from "./components/cars/Car";
 import GalaxyParticles from "./components/cars/GalaxyParticles";
 import SmokeTransition from "./components/cars/SmokeTransition ";
 import { AnimatePresence, motion } from "framer-motion";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [stage, setStage] = useState("clients");
@@ -55,6 +56,7 @@ const App = () => {
   }, []);
 
   return (
+    <>
     <div className=" text-white">
       <Header />
       <HeroSection />
@@ -124,6 +126,8 @@ const App = () => {
         </AnimatePresence>
       </div>
     </div>
+<Footer/>
+    </>
   );
 };
 
