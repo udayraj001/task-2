@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ChevronRight } from "lucide-react";
+import Marquee from "react-fast-marquee"; // ✅ Import the marquee library
 
 // ✅ Import your local card images
 import img1 from "../../assets/cards/card-1.jpg";
@@ -22,43 +23,14 @@ const Clients = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const cards = [
-    {
-      id: 1,
-      image: img1,
-      title: "KPIT's New Technology Center in Sweden unlocks Mobility Innovation",
-      link: "Read More",
-    },
-    {
-      id: 2,
-      image: img2,
-      title:
-        "KPIT collaborates with Mercedes-Benz Research and Development India",
-      link: "Read More",
-    },
-    {
-      id: 3,
-      image: img3,
-      title: "Chairman's message",
-      link: "Read More",
-    },
+    { id: 1, image: img1, title: "KPIT's New Technology Center in Sweden unlocks Mobility Innovation", link: "Read More" },
+    { id: 2, image: img2, title: "KPIT collaborates with Mercedes-Benz Research and Development India", link: "Read More" },
+    { id: 3, image: img3, title: "Chairman's message", link: "Read More" },
   ];
 
-  const logos = [
-    logo1,
-    logo2,
-    logo3,
-    logo4,
-    logo5,
-    logo6,
-    logo7,
-    logo8,
-    logo9,
-    logo10,
-  ];
+  const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10];
 
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
+  const goToSlide = (index) => setCurrentSlide(index);
 
   return (
     <div className="w-full bg-gray-50 py-12">
@@ -73,16 +45,10 @@ const Clients = () => {
             >
               <div className="flex h-32">
                 <div className="w-32 flex-shrink-0 overflow-hidden">
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 p-4 flex flex-col justify-between">
-                  <h3 className="text-sm font-semibold leading-tight mb-2">
-                    {card.title}
-                  </h3>
+                  <h3 className="text-sm font-semibold leading-tight mb-2">{card.title}</h3>
                   <button className="group flex items-center text-sm font-medium self-start text-[#6A4BE7] hover:text-purple-700 transition-colors duration-200">
                     {card.link}
                     <ChevronRight className="ml-1 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
@@ -96,28 +62,16 @@ const Clients = () => {
         {/* Mobile Carousel */}
         <div className="lg:hidden">
           <div className="relative overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
+            <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
               {cards.map((card) => (
-                <div
-                  key={card.id}
-                  className="w-full flex-shrink-0 px-4 bg-white text-gray-800"
-                >
+                <div key={card.id} className="w-full flex-shrink-0 px-4 bg-white text-gray-800">
                   <div className="rounded-2xl overflow-hidden shadow-lg">
                     <div className="flex h-32">
                       <div className="w-32 flex-shrink-0 overflow-hidden">
-                        <img
-                          src={card.image}
-                          alt={card.title}
-                          className="w-full h-full object-cover"
-                        />
+                        <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex-1 p-4 flex flex-col justify-between">
-                        <h3 className="text-sm font-semibold leading-tight mb-2">
-                          {card.title}
-                        </h3>
+                        <h3 className="text-sm font-semibold leading-tight mb-2">{card.title}</h3>
                         <button className="group flex items-center text-sm font-medium self-start text-blue-400 hover:text-blue-300 transition-colors duration-200">
                           {card.link}
                           <ChevronRight className="ml-1 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
@@ -136,9 +90,7 @@ const Clients = () => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                  index === currentSlide ? "bg-blue-600" : "bg-gray-300"
-                }`}
+                className={`w-3 h-3 rounded-full transition-colors duration-200 ${index === currentSlide ? "bg-blue-600" : "bg-gray-300"}`}
               />
             ))}
           </div>
@@ -147,44 +99,19 @@ const Clients = () => {
 
       {/* Trusted By Section */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-          Trusted By Mobility
-        </h2>
-        <h3 className="text-3xl md:text-4xl font-bold text-gray-800">
-          Leaders Worldwide
-        </h3>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Trusted By Mobility</h2>
+        <h3 className="text-3xl md:text-4xl font-bold text-gray-800">Leaders Worldwide</h3>
       </div>
 
-      {/* Logo Marquee */}
+      {/* Logo Marquee using react-fast-marquee */}
       <div className="relative overflow-hidden bg-white py-5">
-        <div className="flex w-[200%] animate-scroll">
-          {/* First set */}
+        <Marquee gradient={false} speed={50}>
           {logos.map((logo, index) => (
-            <div
-              key={`first-${index}`}
-              className="flex-shrink-0 mx-6 flex items-center justify-center min-w-[120px]"
-            >
-              <img
-                src={logo}
-                alt={`logo-${index}`}
-                className="h-12 md:h-16 object-contain grayscale hover:grayscale-0 transition duration-300"
-              />
+            <div key={index} className="flex-shrink-0 mx-6 flex items-center justify-center min-w-[120px]">
+              <img src={logo} alt={`logo-${index}`} className="h-12 md:h-16 object-contain grayscale hover:grayscale-0 transition duration-300" />
             </div>
           ))}
-          {/* Duplicate set for infinite loop */}
-          {logos.map((logo, index) => (
-            <div
-              key={`second-${index}`}
-              className="flex-shrink-0 mx-6 flex items-center justify-center min-w-[120px]"
-            >
-              <img
-                src={logo}
-                alt={`logo-${index}`}
-                className="h-12 md:h-16 object-contain grayscale hover:grayscale-0 transition duration-300"
-              />
-            </div>
-          ))}
-        </div>
+        </Marquee>
       </div>
     </div>
   );
