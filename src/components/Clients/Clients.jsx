@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { ChevronRight } from "lucide-react";
 import Marquee from "react-fast-marquee";
 
-// ✅ Import card images
+// Card images
 import img1 from "../../assets/cards/card-1.jpg";
 import img2 from "../../assets/cards/card-2.png";
 import img3 from "../../assets/cards/card-3.png";
 
-// ✅ Import logo images
+// Logos
 import logo1 from "../../assets/logo/renault.svg";
 import logo2 from "../../assets/logo/bmw.svg";
 import logo3 from "../../assets/logo/honda.svg";
@@ -21,8 +21,6 @@ import logo10 from "../../assets/logo/paccar.svg";
 import logo11 from "../../assets/logo/partner-6.svg";
 
 const Clients = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
   const cards = [
     {
       id: 1,
@@ -49,122 +47,73 @@ const Clients = () => {
     logo7, logo8, logo9, logo10, logo11,
   ];
 
-  const goToSlide = (index) => setCurrentSlide(index);
-
   return (
-    <div className="w-full bg-gray-50 py-12">
-
+    <div className="w-full bg-gray-50 py-12 overflow-x-hidden">
       {/* Cards Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:mb-28">
-        
-        {/* Desktop Cards */}
-        <div className="hidden lg:grid lg:grid-cols-3 gap-6">
+      <div className="max-w-7xl mx-auto px-[5px] sm:px-4 md:px-6 lg:px-8 mb-12">
+        <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
           {cards.map((card) => (
             <div
               key={card.id}
-              className="rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl bg-white text-gray-800"
+              className="min-w-[85%] sm:min-w-[60%] md:min-w-0 snap-start rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-white text-gray-800"
             >
-              <div className="flex h-32">
-                <div className="w-32 flex-shrink-0 overflow-hidden">
+              <div className="flex flex-col md:flex-row items-start">
+                {/* Image */}
+                <div className="w-full md:w-36 h-48 md:h-auto flex-shrink-0">
                   <img
                     src={card.image}
                     alt={card.title}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1 p-4 flex flex-col justify-between">
-                  <h3 className="text-sm font-semibold leading-tight mb-2">
+                {/* Text Content */}
+                <div className="p-4 flex flex-col justify-between">
+                  <h3 className="text-base sm:text-lg font-semibold leading-snug mb-2">
                     {card.title}
                   </h3>
-                  <button className="group flex items-center text-sm font-medium self-start text-[#6A4BE7] hover:text-purple-700 transition-colors duration-200">
+                  <button className="group flex items-center text-sm font-medium self-start text-[#6A4BE7] hover:text-purple-700 transition">
                     {card.link}
-                    <ChevronRight className="ml-1 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
+                    <ChevronRight className="ml-1 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
-
-        {/* Mobile Carousel */}
-        <div className="lg:hidden">
-          <div className="relative overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
-              {cards.map((card) => (
-                <div
-                  key={card.id}
-                  className="w-full flex-shrink-0 px-4 bg-white text-gray-800"
-                >
-                  <div className="rounded-2xl overflow-hidden shadow-lg">
-                    <div className="flex h-32">
-                      <div className="w-32 flex-shrink-0 overflow-hidden">
-                        <img
-                          src={card.image}
-                          alt={card.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="flex-1 p-4 flex flex-col justify-between">
-                        <h3 className="text-sm font-semibold leading-tight mb-2">
-                          {card.title}
-                        </h3>
-                        <button className="group flex items-center text-sm font-medium self-start text-blue-400 hover:text-blue-300 transition-colors duration-200">
-                          {card.link}
-                          <ChevronRight className="ml-1 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Dots Navigation */}
-          <div className="flex justify-center mt-6 space-x-2">
-            {cards.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                  index === currentSlide ? "bg-blue-600" : "bg-gray-300"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
       </div>
 
-      {/* Trusted By Section */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+      {/* Trusted By Heading */}
+      <div className="text-center mt-16 mb-10 px-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2">
           Trusted By Mobility
         </h2>
-        <h3 className="text-3xl md:text-4xl font-bold text-gray-800">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
           Leaders Worldwide
         </h3>
       </div>
 
       {/* Logo Marquee */}
-      <div className="relative overflow-hidden bg-white">
-        <Marquee gradient={false} speed={50} className="flex items-center">
-          {[...logos, ...logos].map((logo, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 flex items-center justify-center"
-              style={{ padding: "14px" }}
-            >
-              <img
-                src={logo}
-                alt={`logo-${index}`}
-                className="h-12 md:h-24 object-contain grayscale hover:grayscale-0 transition duration-300 md:pl-1.5"
-              />
-            </div>
-          ))}
-        </Marquee>
+      <div className="bg-white py-4 overflow-x-hidden w-full">
+        <div className="max-w-screen mx-auto">
+          <Marquee
+            gradient={false}
+            speed={40}
+            className="flex items-center w-full"
+          >
+            {[...logos, ...logos].map((logo, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-center px-4 sm:px-6 py-2"
+              >
+                <img
+                  src={logo}
+                  alt={`logo-${index}`}
+                  className="h-10 sm:h-14 md:h-20 object-contain grayscale hover:grayscale-0 transition duration-300"
+                />
+              </div>
+            ))}
+          </Marquee>
+        </div>
       </div>
     </div>
   );

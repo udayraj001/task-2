@@ -3,23 +3,40 @@ import * as THREE from "three";
 
 const GalaxyParticles = () => {
   const containerRef = useRef(null);
+  const rendererRef = useRef(null);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
+
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     camera.position.z = 200;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(width, height);
     container.appendChild(renderer.domElement);
+    rendererRef.current = renderer;
+
+    // Helper to resize renderer and camera
+    const resizeRenderer = () => {
+      if (!container) return;
+      const newWidth = container.clientWidth;
+      const newHeight = container.clientHeight;
+
+      camera.aspect = newWidth / newHeight;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(newWidth, newHeight);
+    };
+
+    // ResizeObserver (more reliable than window.resize)
+    const observer = new ResizeObserver(resizeRenderer);
+    observer.observe(container);
 
     // -----------------------------
     // Create Particles with Random Sizes
@@ -36,14 +53,10 @@ const GalaxyParticles = () => {
           const x = (Math.random() - 0.5) * area;
           const y = Math.random() * (yRange.max - yRange.min) + yRange.min;
           const z = (Math.random() - 0.5) * area;
-
           positions.set([x, y, z], j * 3);
         }
 
-        geometry.setAttribute(
-          "position",
-          new THREE.BufferAttribute(positions, 3)
-        );
+        geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
         const size = Math.random() * (sizeMax - sizeMin) + sizeMin;
         const material = new THREE.PointsMaterial({
@@ -58,43 +71,27 @@ const GalaxyParticles = () => {
       return group;
     };
 
-    // Floor (dense, smaller)
-    const floorParticles = createParticles(
-      12000,
-      800,
-      { min: -5, max: 5 },
-      0.3,
-      0.9
-    );
+    // Floor Particles
+    const floorParticles = createParticles(12000, 800, { min: -5, max: 5 }, 0.3, 0.9);
     scene.add(floorParticles);
 
-    // Sky (sparse, tiny)
-    const skyParticles = createParticles(
-      3000,
-      800,
-      { min: 80, max: 400 },
-      0.2,
-      0.7
-    );
+    // Sky Particles
+    const skyParticles = createParticles(3000, 800, { min: 80, max: 400 }, 0.2, 0.7);
     scene.add(skyParticles);
 
-    // -----------------------------
     // Mouse Parallax
-    // -----------------------------
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
     let targetY = 0;
 
     const handleMouseMove = (event) => {
-      mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-      mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+      mouseX = (event.clientX / container.clientWidth) * 2 - 1;
+      mouseY = -(event.clientY / container.clientHeight) * 2 + 1;
     };
     window.addEventListener("mousemove", handleMouseMove);
 
-    // -----------------------------
     // Animation Loop
-    // -----------------------------
     const animate = () => {
       requestAnimationFrame(animate);
 
@@ -112,28 +109,22 @@ const GalaxyParticles = () => {
     };
     animate();
 
-    // -----------------------------
-    // Resize Handling
-    // -----------------------------
-    const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    };
-    window.addEventListener("resize", handleResize);
-
+    // Cleanup
     return () => {
-      window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
-      container.removeChild(renderer.domElement);
+      observer.disconnect();
+      if (rendererRef.current) {
+        container.removeChild(rendererRef.current.domElement);
+        rendererRef.current.dispose();
+      }
     };
   }, []);
 
   return (
     <div
       ref={containerRef}
-      className="w-full h-screen"
-      style={{ backgroundColor: "black" }}
+      className="w-full h-[100dvh] bg-black"
+      style={{ overflow: "hidden" }}
     />
   );
 };
