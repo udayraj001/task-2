@@ -48,7 +48,7 @@ const Clients = () => {
   ];
 
   return (
-    <div className="w-[320px] md:w-full bg-gray-50 py-12 overflow-x-hidden mt-32 mb-24">
+    <div className="w-[320px] md:w-full bg-gray-50 py-12 overflow-x-hidden mt-11 md:mt-28 mb-24">
       {/* Cards Section */}
       <div className="max-w-7xl mx-auto px-1 md:px-6 mb-12">
         <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
