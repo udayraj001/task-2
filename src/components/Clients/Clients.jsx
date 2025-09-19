@@ -48,14 +48,14 @@ const Clients = () => {
   ];
 
   return (
-    <div className="w-[290px] md:w-full bg-gray-50 py-12 overflow-x-hidden mt-32 mb-24">
+    <div className="w-[320px] md:w-full bg-gray-50 py-12 overflow-x-hidden mt-32 mb-24">
       {/* Cards Section */}
       <div className="max-w-7xl mx-auto px-1 md:px-6 mb-12">
         <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
           {cards.map((card) => (
             <div
               key={card.id}
-              className="min-w-[75%] sm:min-w-[60%] md:min-w-0  rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-white text-gray-800"
+              className="min-w-[99%] sm:min-w-[60%] md:min-w-0  rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-white text-gray-800"
             >
               <div className="flex flex-col md:flex-row items-start">
                 {/* Image */}
