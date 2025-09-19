@@ -47,55 +47,58 @@ const JoinOurTeam = () => {
 
   return (
     <section className="md:w-full py-16 px-6 md:px-20 flex flex-col md:flex-row items-center gap-12">
-      {/* LEFT CIRCLE CARD WITH PARTICLE BACKGROUND */}
-      <div className="flex-1 flex justify-center relative">
-        {/* Particle Background */}
-        <motion.div
-          initial={{ rotate: 0 }}
-          whileHover={{
-            rotate: [0, 15, -15, 0], // clockwise then anticlockwise
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute w-[420px] h-[420px] rounded-full hidden md:block "
-          style={{ 
-            backgroundImage:
-              "radial-gradient(circle, #22c55e 2px, transparent 2px)",
-            backgroundSize: "20px 20px",
-          }}
-        ></motion.div>
+   {/* LEFT CIRCLE CARD WITH PARTICLE BACKGROUND */}
+<div className="flex-1 flex justify-center relative">
+  {/* Centered Particle Background */}
+  <motion.div
+    initial={{ rotate: 0 }}
+    animate={{ rotate: 180 }}
+    transition={{
+      duration: 20,
+      repeat: Infinity,
+      ease: "linear",
+    }}
+    className="absolute inset-0 flex justify-center items-center"
+  >
+    <div
+      className="w-[420px] h-[420px] rounded-full"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle, #22c55e 2px, transparent 2px)",
+        backgroundSize: "20px 20px",
+      }}
+    />
+  </motion.div>
 
-        {/* Testimonial Card */}
-        <motion.div
-          key={index}
-          initial={{ rotateY: 0 }}
-          animate={{ rotateY: 360 }}
-          transition={{ duration: 1.7 }}
-          className="relative w-70 h-70 rounded-full bg-[#212121] text-white flex flex-col items-center justify-center p-6 text-center shadow-xl z-10 "
-          style={{ backfaceVisibility: "hidden" }}
-        >
-          <img
-            src={testimonials[index].img}
-            alt={testimonials[index].name}
-            className="w-20 h-20 rounded-full border-4 border-[#b0ff44] object-cover absolute -top-10 left-1/2 -translate-x-1/2"
-          />
-          <h3 className="mt-12 text-[#b0ff44] font-semibold">
-            {testimonials[index].name}
-          </h3>
-          <p className="text-sm">{testimonials[index].role}</p>
-          <p className="mt-4 text-sm font-medium leading-relaxed">
-            {testimonials[index].quote}
-          </p>
-        </motion.div>
-      </div>
+  {/* Testimonial Card */}
+  <motion.div
+    key={index}
+    initial={{ rotateY: 0 }}
+    animate={{ rotateY: 360 }}
+    transition={{ duration: 1.7 }}
+    className="relative w-70 h-70 rounded-full bg-[#212121] text-white flex flex-col items-center justify-center p-6 text-center shadow-xl z-10"
+    style={{ backfaceVisibility: "hidden" }}
+  >
+    <img
+      src={testimonials[index].img}
+      alt={testimonials[index].name}
+      className="w-20 h-20 rounded-full border-4 border-[#b0ff44] object-cover absolute -top-10 left-1/2 -translate-x-1/2"
+    />
+    <h3 className="mt-12 text-[#b0ff44] font-semibold">
+      {testimonials[index].name}
+    </h3>
+    <p className="text-sm">{testimonials[index].role}</p>
+    <p className="mt-4 text-sm font-medium leading-relaxed">
+      {testimonials[index].quote}
+    </p>
+  </motion.div>
+</div>
+
 
       {/* RIGHT SECTION */}
       <div className="flex-1 space-y-8">
-        <div className="flex items-center gap-2 bg-gray-100 rounded-full px-4 py-2 text-sm text-gray-600 w-fit">
-          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+        <div className="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2 text-sm text-gray-600 w-fit">
+          <span className="w-2 h-2 bg-[#b0ff44] rounded-full"></span>
           We’re hiring self-motivated people to join the team
         </div>
 
