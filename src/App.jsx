@@ -63,86 +63,85 @@ const App = () => {
 
   return (
     <>
-    <div className=" text-white">
-     <div className="fixed top-0 left-0 w-full z-50 bg-black">
-    <Header />
-  </div>
-      <HeroSection />
+      <div className=" text-white">
+        <div className="fixed top-0 left-0 w-full z-50 bg-black">
+          <Header />
+        </div>
+        <HeroSection />
 
-      {/* 🔹 Clients Section */}
-      <div
-        id="clients"
-        ref={clientsRef}
-        className="h-screen flex items-center justify-center"
-      >
-        <AnimatePresence mode="wait">
-          {stage === "clients" && (
-            <motion.div
-              key="clients"
-              variants={transitionVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              <Clients />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* 🔹 Clients Section */}
+        <div
+          id="clients"
+          ref={clientsRef}
+          className="h-screen flex items-center justify-center"
+        >
+          <AnimatePresence mode="wait">
+            {stage === "clients" && (
+              <motion.div
+                key="clients"
+                variants={transitionVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <Clients />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* 🔹 Galaxy Section with Border Glow */}
+        <div
+          id="galaxy"
+          ref={galaxyRef}
+          className="relative h-screen flex items-center justify-center overflow-hidden bg-black"
+        >
+          <AnimatePresence mode="wait">
+            {stage === "galaxy" && (
+              <motion.div
+                key="galaxy"
+                variants={transitionVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="w-full h-full bg-black"
+              >
+                <GalaxyParticles />
+                <SmokeTransition /> {/* 🔹 Border glow overlay */}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* 🔹 Car Section */}
+        <div
+          id="car"
+          ref={carRef}
+          className="h-screen flex items-center justify-center bg-black"
+        >
+          <AnimatePresence mode="wait">
+            {stage === "car" && (
+              <motion.div
+                key="car"
+                variants={transitionVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <Car />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
-
-      {/* 🔹 Galaxy Section with Border Glow */}
-      <div
-        id="galaxy"
-        ref={galaxyRef}
-        className="relative h-screen flex items-center justify-center overflow-hidden bg-black"
-      >
-        <AnimatePresence mode="wait">
-          {stage === "galaxy" && (
-            <motion.div
-              key="galaxy"
-              variants={transitionVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              className="w-full h-full bg-black"
-            >
-              <GalaxyParticles />
-              <SmokeTransition /> {/* 🔹 Border glow overlay */}
-            </motion.div>
-          )}
-        </AnimatePresence>
+      <div>
+        <CarPlates />
+        <ServicesSection />
+        <Testimonials />
+        <JoinOurTeam />
+        <Subscribe />
+        <Footer />
       </div>
-
-      {/* 🔹 Car Section */}
-      <div
-        id="car"
-        ref={carRef}
-        className="h-screen flex items-center justify-center bg-black"
-      >
-        <AnimatePresence mode="wait">
-          {stage === "car" && (
-            <motion.div
-              key="car"
-              variants={transitionVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              <Car />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </div>
-             <div>
-                    <CarPlates/>
-                 <ServicesSection/>
-              <Testimonials/>
-          <JoinOurTeam/>
-    <Subscribe/>
-<Footer/>
-
-</div>
     </>
   );
 };
