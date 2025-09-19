@@ -12,6 +12,7 @@ import JoinOurTeam from "./components/team/JoinOurTeam";
 import CarPlates from "./components/cars/CarPlates";
 import CommWave from "./components/CommWave";
 import Testimonials from "./components/testimonial/Testimonials";
+import ServicesSection from "./components/services/ServicesSection";
 
 const App = () => {
   const [stage, setStage] = useState("clients");
@@ -63,7 +64,9 @@ const App = () => {
   return (
     <>
     <div className=" text-white">
-      <Header />
+     <div className="fixed top-0 left-0 w-full z-50 bg-black">
+    <Header />
+  </div>
       <HeroSection />
 
       {/* 🔹 Clients Section */}
@@ -132,7 +135,8 @@ const App = () => {
       </div>
     </div>
              <div>
-              <CarPlates/>
+                    <CarPlates/>
+                 <ServicesSection/>
               <Testimonials/>
           <JoinOurTeam/>
     <Subscribe/>
