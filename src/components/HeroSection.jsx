@@ -3,7 +3,7 @@ import ParticleAnimation from './ParticleAnimation';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen bg-white overflow-hidden">
+    <section className="relative min-h-screen bg-white overflow-hidden mt-10">
       {/* Text Content Div */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 pt-14">
         {/* News Banner */}
