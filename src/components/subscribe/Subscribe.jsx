@@ -1,5 +1,6 @@
 import React from 'react';
 import ParticleAnimation from '../ParticleAnimation';
+import CommWave from '../CommWave';
 
 const Subscribe = () => {
   return (
@@ -25,10 +26,10 @@ Get the important updates from the world of mobility .          </p>
 
       </div>
 
-      {/* Animation Div - Separate from text */}
-      <div className="relative w-full">
+
+  
         <ParticleAnimation />
-      </div>
+
     </section>
   );
 };

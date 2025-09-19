@@ -58,7 +58,7 @@ const JoinOurTeam = () => {
       repeat: Infinity,
       ease: "linear",
     }}
-    className="absolute inset-0 flex justify-center items-center"
+    className="hidden md:block absolute inset-0  justify-center items-center"
   >
     <div
       className="w-[420px] h-[420px] rounded-full"

@@ -1,0 +1,23 @@
+/* simple pill hover animation for navbar items (continuous subtle pulse) */
+@keyframes pillPulse {
+  0% { transform: translateY(0px) scale(1); box-shadow: 0 6px 12px rgba(0,0,0,0.06); }
+  50% { transform: translateY(-2px) scale(1.01); box-shadow: 0 14px 28px rgba(0,0,0,0.08); }
+  100% { transform: translateY(0px) scale(1); box-shadow: 0 6px 12px rgba(0,0,0,0.06); }
+}
+
+/* make all navbar pills gently animate */
+nav .pill-animated {
+  animation: pillPulse 4s ease-in-out infinite;
+}
+
+/* fallback styling if not using Tailwind */
+.section-fallback {
+  font-family: Roobert, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* small responsive tweaks */
+@media (max-width: 768px) {
+  .sticky {
+    top: 80px;
+  }
+}

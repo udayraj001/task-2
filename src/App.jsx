@@ -9,7 +9,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import Footer from "./components/Footer";
 import Subscribe from "./components/subscribe/Subscribe";
 import JoinOurTeam from "./components/team/JoinOurTeam";
-import CarShowcase from "./components/cars/CarShowcase";
+import CarPlates from "./components/cars/CarPlates";
+import CommWave from "./components/CommWave";
+import Testimonials from "./components/testimonial/Testimonials";
 
 const App = () => {
   const [stage, setStage] = useState("clients");
@@ -130,10 +132,12 @@ const App = () => {
       </div>
     </div>
              <div>
-              {/* <CarShowcase/> */}
+              <CarPlates/>
+              <Testimonials/>
           <JoinOurTeam/>
     <Subscribe/>
 <Footer/>
+
 </div>
     </>
   );
