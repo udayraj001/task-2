@@ -48,7 +48,7 @@ const Clients = () => {
   ];
 
   return (
-    <div className="w-full bg-gray-50 py-12 overflow-x-hidden">
+    <div className="w-[290px] md:w-full bg-gray-50 py-12 overflow-x-hidden mt-5 mb-24">
       {/* Cards Section */}
       <div className="max-w-7xl mx-auto px-1 md:px-6 mb-12">
         <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
@@ -59,11 +59,11 @@ const Clients = () => {
             >
               <div className="flex flex-col md:flex-row items-start">
                 {/* Image */}
-                <div className="w-full md:w-36 h-48 md:h-auto flex-shrink-0">
+                <div className="w-full md:w-36 h-48 md:h-auto flex-shrink-0 ">
                   <img
                     src={card.image}
                     alt={card.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover "
                   />
                 </div>
                 {/* Text Content */}
