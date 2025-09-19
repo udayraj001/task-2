@@ -20,6 +20,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-fast-marquee": "^1.6.5",
+    "react-spring": "^10.0.3",
     "react-wavify": "^1.11.1",
     "three": "^0.180.0",
     "vanta": "^0.5.24"
